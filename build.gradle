@@ -27,6 +27,3 @@ dependencies {
     }
 }
 
-bootJar {
- archiveFileName="app.jar"
- }
