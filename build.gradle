@@ -33,7 +33,7 @@ bootJar {
 
 buildscript {
     ext {
-        springBootVersion = '1.5.8.RELEASE'
+        springBootVersion = '2.2.6.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -47,7 +47,7 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = 1.8
 
 repositories {
@@ -62,5 +62,13 @@ jar {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-}
+    compile group: 'org.javassist', name: 'javassist', version: '3.15.0-GA'
+    implementation('org.postgresql:postgresql')
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
